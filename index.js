@@ -4,22 +4,16 @@ var dsQueue = function() {
       len = 0
 
   function enqueue(obj) {
-    var node = { val: obj, head: tail, tail: null }
+    var node = { val: obj, next: null }
     
-    if (len > 1) {
-      tail.tail = node
-      tail = node
+    if (len > 0) {
+      tail.next = node
     }    
     else {
-      if (len === 0) {
-        head = node
-      } else {
-        tail = node
-        tail.head = head
-        head.tail = tail
-      }
+      head = node
     }
-     
+    
+    tail = node
     len += 1
 
     return obj
@@ -30,7 +24,7 @@ var dsQueue = function() {
 
     if (head != null) {
       res = head.val
-      head = head.tail
+      head = head.next
       len -= 1
     }
 
@@ -46,7 +40,7 @@ var dsQueue = function() {
 
       while (n !== null) {
         arr.push(n.val)
-        n = n.tail
+        n = n.next
       }
 
       return arr
