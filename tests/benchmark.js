@@ -29,8 +29,8 @@ function testSequential(n) {
       throw new Error(err.join(''));
     }
   }
-  var total = stopTimer(timer)
-  console.log('Testing sequential on ' + n + ' objects: ' + total + ' ms')
+  return stopTimer(timer)
+  
 }
 
 function testThreeInRow(n) {
@@ -46,12 +46,11 @@ function testThreeInRow(n) {
       q.dequeue();
     }
   }
-  var total = stopTimer(timer);
-  console.log('Testing Three-In-Row on ' + n + ' objects: ' + total + ' ms')
-
+  return stopTimer(timer);
 }
 
 for (var i = 2; i < Math.pow(2, 24); i = 2 * i) {
-  testThreeInRow(i)
-  testSequential(i)
+  var threeInRow = testThreeInRow(i)
+  var sequential = testSequential(i)
+  console.log('Benchmarking on ' + i + ' items.\nThree-in-row: ' + (threeInRow / i) + ' ms (total: ' + threeInRow + ' ms)\nSequential  : ' + (sequential / i) + ' ms (total: ' + sequential + ' ms)');
 }
