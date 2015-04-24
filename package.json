@@ -1,6 +1,6 @@
 {
   "name": "dsqueue",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Dead simple queue implementation (FIFO)",
   "main": "index.js",
   "scripts": {

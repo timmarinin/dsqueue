@@ -1,15 +1,7 @@
 var dsQueue = function() {
-  var head = null, tail = null, len = 0,
-      firstEnqueuesStrategies = {
-        0: function(node) {
-            head = node
-        },
-        1: function(node) {
-          tail = node
-          tail.head = head
-          head.tail = tail
-        }
-      }
+  var head = null,
+      tail = null,
+      len = 0
 
   function enqueue(obj) {
     var node = { val: obj, head: tail, tail: null }
@@ -59,7 +51,7 @@ var dsQueue = function() {
 
       return arr
     },
-  };
+  }
 
   Object.defineProperty(interface, 'length', {
     get: function() {
